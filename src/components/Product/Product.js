@@ -2,15 +2,18 @@ import ImageProducts from '../ImageProducts/ImageProducts';
 import ProductsForm from '../ProductsForm/ProductsForm';
 import styles from './Product.module.scss';
 import PropTypes from 'prop-types';
+import { useMemo } from 'react';
 
 const Product = props => {
 
-   const getPrice = () => {
-    const chosenSize = props.data.sizes.find(size => size.name === props.currentSize);
-    const additionalPrice = chosenSize ? chosenSize.additionalPrice : 0;
-    const productPrice = props.data.basePrice + additionalPrice;
-    return productPrice;
-  }
+  const getPrice = useMemo(() => {
+    return () => {
+      const chosenSize = props.data.sizes.find(size => size.name === props.currentSize);
+      const additionalPrice = chosenSize ? chosenSize.additionalPrice : 0;
+      const productPrice = props.data.basePrice + additionalPrice;
+      return productPrice;
+    }
+  },[props.data, props.currentSize]);
 
   return (
     <article className={styles.product}>
