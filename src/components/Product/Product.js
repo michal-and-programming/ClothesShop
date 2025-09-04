@@ -7,12 +7,10 @@ import { useMemo } from 'react';
 const Product = props => {
 
   const getPrice = useMemo(() => {
-    return () => {
       const chosenSize = props.data.sizes.find(size => size.name === props.currentSize);
       const additionalPrice = chosenSize ? chosenSize.additionalPrice : 0;
       const productPrice = props.data.basePrice + additionalPrice;
       return productPrice;
-    }
   },[props.data, props.currentSize]);
 
   return (
@@ -21,7 +19,7 @@ const Product = props => {
       <div>
         <header>
           <h2 className={styles.name}>{ props.data.title}</h2>
-          <span className={styles.price}>{getPrice()}$</span>
+          <span className={styles.price}>{getPrice}$</span>
         </header>
         <ProductsForm
           data={props.data}
