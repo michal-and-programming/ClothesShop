@@ -15,7 +15,7 @@ const ProductsForm = (props) => {
       <OptionColor colors={props.data.colors} selectColor={props.selectColor} colorChange={props.colorChange} id={props.data.id}/>
       <Button onClick={(e) => {
             e.preventDefault();
-            addDataProduct(props.data.name, props.getPrice, props.selectSize, props.selectColor)}}>
+            addDataProduct(props.data.name, props.price, props.selectSize, props.selectColor)}}>
             <span className="fa fa-shopping-cart" />
           </Button>
     </form>

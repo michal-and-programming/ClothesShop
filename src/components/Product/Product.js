@@ -6,7 +6,7 @@ import { useMemo } from 'react';
 
 const Product = props => {
 
-  const getPrice = useMemo(() => {
+  const price = useMemo(() => {
       const chosenSize = props.data.sizes.find(size => size.name === props.currentSize);
       const additionalPrice = chosenSize ? chosenSize.additionalPrice : 0;
       const productPrice = props.data.basePrice + additionalPrice;
@@ -19,7 +19,7 @@ const Product = props => {
       <div>
         <header>
           <h2 className={styles.name}>{ props.data.title}</h2>
-          <span className={styles.price}>{getPrice}$</span>
+          <span className={styles.price}>{price}$</span>
         </header>
         <ProductsForm
           data={props.data}
@@ -27,7 +27,7 @@ const Product = props => {
           colorChange={props.colorChange}
           selectSize={props.currentSize}
           sizeChange={props.sizeChange}
-          getPrice={getPrice}
+          price={price}
         />
       </div>
     </article>
